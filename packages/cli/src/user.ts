@@ -14,7 +14,7 @@ export interface UserConfig {
   dockerProxySet?: boolean
 }
 
-export const USER_CONFIG_PATH = path.join(os.homedir(), '.e2b', 'config.json') // TODO: Keep in Keychain
+export const USER_CONFIG_PATH = path.join(os.homedir(), '.uagentbox', 'config.json')
 export const DOCS_BASE =
   process.env.E2B_DOCS_BASE ||
   `https://${process.env.E2B_DOMAIN || 'uagentbox.ai'}/docs`
