@@ -1,18 +1,16 @@
 {
-  "name": "@e2b/cli",
-  "version": "2.4.2",
-  "description": "CLI for managing e2b sandbox templates",
-  "homepage": "https://e2b.dev",
+  "name": "uagentbox-cli",
+  "version": "0.1.0",
+  "description": "CLI for managing UCloud sandbox templates",
+  "homepage": "https://uagentbox.ai",
   "license": "MIT",
   "author": {
-    "name": "FoundryLabs, Inc.",
-    "email": "hello@e2b.dev",
-    "url": "https://e2b.dev"
+    "name": "jason.mei"
   },
-  "bugs": "https://github.com/e2b-dev/e2b/issues",
+  "bugs": "https://github.com/mfzzf/e2b-sdk/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/e2b-dev/e2b",
+    "url": "https://github.com/mfzzf/e2b-sdk",
     "directory": "packages/cli"
   },
   "publishConfig": {
