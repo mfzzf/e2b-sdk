@@ -8,7 +8,7 @@ import { authCommand } from './auth'
 export const program = new commander.Command()
   .description(
     `Create sandbox templates from Dockerfiles by running ${asPrimary(
-      'uagentbox-cli template build'
+      'uabx template build'
     )} then use our SDKs to create sandboxes from these templates.
 
 Visit ${asPrimary(

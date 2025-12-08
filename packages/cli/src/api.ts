@@ -26,7 +26,7 @@ const authErrorBox = (keyName: string) => {
     throw new Error(`Unknown key name: ${keyName}`)
   }
   return boxen.default(
-    `You must be logged in to use this command. Run ${asBold('uagentbox-cli auth login')}.
+    `You must be logged in to use this command. Run ${asBold('uabx auth login')}.
 
 If you are seeing this message in CI/CD you may need to set the ${asBold(
       `${keyName}`
@@ -61,7 +61,7 @@ export function ensureAPIKey() {
 export function ensureUserConfig(): UserConfig {
   const userConfig = getUserConfig()
   if (!userConfig) {
-    console.error('No user config found, run `uagentbox-cli auth login` to log in first.')
+    console.error('No user config found, run `uabx auth login` to log in first.')
     process.exit(1)
   }
   return userConfig

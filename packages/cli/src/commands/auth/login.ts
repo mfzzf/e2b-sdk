@@ -27,7 +27,7 @@ export const loginCommand = new commander.Command('login')
       console.log(
         `\nAlready logged in. ${asFormattedConfig(
           userConfig
-        )}.\n\nIf you want to log in as a different user, log out first by running 'uagentbox-cli auth logout'.\nTo change the team, run 'uagentbox-cli auth configure'.\n`
+        )}.\n\nIf you want to log in as a different user, log out first by running 'uabx auth logout'.\nTo change the team, run 'uabx auth configure'.\n`
       )
       return
     }

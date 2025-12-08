@@ -556,7 +556,7 @@ export class SandboxApi {
       await this.kill(res.data!.sandboxID, opts)
       throw new TemplateError(
         'You need to update the template to use the new SDK. ' +
-        'You can do this by running `uagentbox-cli template build` in the directory with the template.'
+        'You can do this by running `uabx template build` in the directory with the template.'
       )
     }
 
