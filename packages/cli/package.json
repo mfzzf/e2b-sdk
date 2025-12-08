@@ -1,6 +1,6 @@
 {
   "name": "uagentbox-cli",
-  "version": "0.1.3",
+  "version": "0.1.6",
   "description": "CLI for managing UCloud sandbox templates",
   "homepage": "https://uagentbox.ai",
   "license": "MIT",
@@ -84,7 +84,6 @@
     "commander": "^11.1.0",
     "console-table-printer": "^2.11.2",
     "dockerfile-ast": "^0.6.1",
-    "e2b": "workspace:../js-sdk",
     "handlebars": "^4.7.8",
     "inquirer": "^12.10.0",
     "open": "^9.1.0",

@@ -35,8 +35,15 @@ export const loginCommand = new commander.Command('login')
     console.log(`Log in to CLI.\n`)
     console.log(`Get your API Key from: ${asPrimary(API_KEY_URL)}\n`)
 
-    // Open browser to API key page
-    await open.default(API_KEY_URL)
+    // Try to open browser to API key page (may fail on headless servers)
+    try {
+      const childProcess = await open.default(API_KEY_URL, { wait: false })
+      childProcess.on('error', () => {
+        // Silently ignore if browser can't be opened
+      })
+    } catch (err) {
+      // Silently ignore if browser can't be opened
+    }
 
     const inquirer = await import('inquirer')
 
