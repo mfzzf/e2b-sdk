@@ -271,9 +271,6 @@ importers:
       dockerfile-ast:
         specifier: ^0.6.1
         version: 0.6.1
-      e2b:
-        specifier: workspace:../js-sdk
-        version: link:../js-sdk
       handlebars:
         specifier: ^4.7.8
         version: 4.7.8

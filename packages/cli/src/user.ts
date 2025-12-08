@@ -21,5 +21,12 @@ export const DOCS_BASE =
 
 export function getUserConfig(): UserConfig | null {
   if (!fs.existsSync(USER_CONFIG_PATH)) return null
-  return JSON.parse(fs.readFileSync(USER_CONFIG_PATH, 'utf8'))
+  try {
+    const content = fs.readFileSync(USER_CONFIG_PATH, 'utf8')
+    if (!content || content.trim() === '') return null
+    return JSON.parse(content)
+  } catch {
+    // Return null if config file is empty or contains invalid JSON
+    return null
+  }
 }
