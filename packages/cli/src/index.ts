@@ -16,7 +16,7 @@ updateNotifier({
 const prog = program.version(
   packageJSON.version,
   undefined,
-  'display E2B CLI version'
+  'display UCloud Sandbox CLI version'
 )
 
 if (process.env.NODE_ENV === 'development') {

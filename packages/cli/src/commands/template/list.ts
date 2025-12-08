@@ -22,7 +22,7 @@ export const listCommand = new commander.Command('list')
       process.stdout.write('\n')
 
       const templates = await listSandboxTemplates({
-        teamID: opts.team || userConfig?.teamId,
+        teamID: opts.team,
       })
 
       for (const template of templates) {
