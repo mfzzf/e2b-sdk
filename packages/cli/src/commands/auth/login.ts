@@ -1,13 +1,16 @@
 import * as commander from 'commander'
 import * as fs from 'fs'
 import * as path from 'path'
+import * as open from 'open'
 
 import {
   getUserConfig,
   USER_CONFIG_PATH,
   UserConfig,
 } from 'src/user'
-import { asFormattedConfig, asFormattedError } from 'src/utils/format'
+import { asFormattedConfig, asFormattedError, asPrimary } from 'src/utils/format'
+
+const API_KEY_URL = 'https://console.ucloud.cn/modelverse/experience/api-keys'
 
 export const loginCommand = new commander.Command('login')
   .description('log in to CLI')
@@ -24,12 +27,16 @@ export const loginCommand = new commander.Command('login')
       console.log(
         `\nAlready logged in. ${asFormattedConfig(
           userConfig
-        )}.\n\nIf you want to log in as a different user, log out first by running 'e2b auth logout'.\nTo change the team, run 'e2b auth configure'.\n`
+        )}.\n\nIf you want to log in as a different user, log out first by running 'uagentbox-cli auth logout'.\nTo change the team, run 'uagentbox-cli auth configure'.\n`
       )
       return
     }
 
-    console.log('Log in to E2B CLI.')
+    console.log(`Log in to CLI.\n`)
+    console.log(`Get your API Key from: ${asPrimary(API_KEY_URL)}\n`)
+
+    // Open browser to API key page
+    await open.default(API_KEY_URL)
 
     const inquirer = await import('inquirer')
 

@@ -9,25 +9,21 @@ import { asFormattedSandboxTemplate, asLocalRelative } from 'src/utils/format'
 export const configName = 'e2b.toml'
 
 function getConfigHeader(config: E2BConfig) {
-  return `# This is a config for E2B sandbox template.
-# You can use template ID (${config.template_id}) ${
-    config.template_name ? `or template name (${config.template_name}) ` : ''
-  }to create a sandbox:
+  return `# This is a config for UCloud Sandbox template.
+# You can use template ID (${config.template_id}) ${config.template_name ? `or template name (${config.template_name}) ` : ''
+    }to create a sandbox:
 
 # Python SDK
-# from e2b import Sandbox, AsyncSandbox
-# sandbox = Sandbox.create("${
-    config.template_name || config.template_id
-  }") # Sync sandbox
-# sandbox = await AsyncSandbox.create("${
-    config.template_name || config.template_id
-  }") # Async sandbox
+# from uagentbox import Sandbox, AsyncSandbox
+# sandbox = Sandbox.create("${config.template_name || config.template_id
+    }") # Sync sandbox
+# sandbox = await AsyncSandbox.create("${config.template_name || config.template_id
+    }") # Async sandbox
 
 # JS SDK
-# import { Sandbox } from 'e2b'
-# const sandbox = await Sandbox.create('${
-    config.template_name || config.template_id
-  }')
+# import { Sandbox } from 'uagentbox'
+# const sandbox = await Sandbox.create('${config.template_name || config.template_id
+    }')
 
 `
 }
@@ -108,7 +104,7 @@ export async function saveConfig(
     await fsPromise.writeFile(configPath, getConfigHeader(config) + tomlRaw)
   } catch (err: any) {
     throw new Error(
-      `E2B sandbox template config ${asFormattedSandboxTemplate(
+      `Sandbox template config ${asFormattedSandboxTemplate(
         {
           templateID: config.template_id,
         },

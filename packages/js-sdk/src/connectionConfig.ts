@@ -102,7 +102,7 @@ export class ConnectionConfig {
   }
 
   private static get domain() {
-    return getEnvVar('E2B_DOMAIN') || 'e2b.app'
+    return getEnvVar('E2B_DOMAIN') || 'uagentbox.ai'
   }
 
   private static get apiUrl() {

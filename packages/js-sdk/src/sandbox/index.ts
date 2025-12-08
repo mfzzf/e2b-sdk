@@ -51,7 +51,7 @@ export interface SandboxUrlOpts {
  * - Run isolated code
  * - Access the internet
  *
- * Check docs [here](https://e2b.dev/docs).
+ * Check docs [here](https://docs.ucloud.cn/modelverse/README).
  *
  * Use {@link Sandbox.create} to create a new sandbox.
  *
@@ -254,15 +254,15 @@ export class Sandbox extends SandboxApi {
     const { template, sandboxOpts } =
       typeof templateOrOpts === 'string'
         ? {
-            template: templateOrOpts,
-            sandboxOpts: opts,
-          }
+          template: templateOrOpts,
+          sandboxOpts: opts,
+        }
         : {
-            template: templateOrOpts?.mcp
-              ? this.defaultMcpTemplate
-              : this.defaultTemplate,
-            sandboxOpts: templateOrOpts,
-          }
+          template: templateOrOpts?.mcp
+            ? this.defaultMcpTemplate
+            : this.defaultTemplate,
+          sandboxOpts: templateOrOpts,
+        }
 
     const config = new ConnectionConfig(sandboxOpts)
     if (config.debug) {
@@ -349,15 +349,15 @@ export class Sandbox extends SandboxApi {
     const { template, sandboxOpts } =
       typeof templateOrOpts === 'string'
         ? {
-            template: templateOrOpts,
-            sandboxOpts: opts,
-          }
+          template: templateOrOpts,
+          sandboxOpts: opts,
+        }
         : {
-            template: templateOrOpts?.mcp
-              ? this.defaultMcpTemplate
-              : this.defaultTemplate,
-            sandboxOpts: templateOrOpts,
-          }
+          template: templateOrOpts?.mcp
+            ? this.defaultMcpTemplate
+            : this.defaultTemplate,
+          sandboxOpts: templateOrOpts,
+        }
 
     const config = new ConnectionConfig(sandboxOpts)
     if (config.debug) {
@@ -726,7 +726,7 @@ export class Sandbox extends SandboxApi {
       if (compareVersions(this.envdApi.version, '0.1.5') < 0) {
         throw new SandboxError(
           'You need to update the template to use the new SDK. ' +
-            'You can do this by running `e2b template build` in the directory with the template.'
+          'You can do this by running `e2b template build` in the directory with the template.'
         )
       }
 

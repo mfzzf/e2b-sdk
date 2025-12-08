@@ -43,7 +43,7 @@ export function handleApiError(
 }
 
 /**
- * Client for interacting with the E2B API.
+ * Client for interacting with the UCloud Sandbox API.
  */
 class ApiClient {
   readonly api: ReturnType<typeof createClient<paths>>
@@ -57,16 +57,16 @@ class ApiClient {
   ) {
     if (opts?.requireApiKey && !config.apiKey) {
       throw new AuthenticationError(
-        'API key is required, please visit the Team tab at https://e2b.dev/dashboard to get your API key. ' +
-          'You can either set the environment variable `E2B_API_KEY` ' +
-          "or you can pass it directly to the sandbox like Sandbox.create({ apiKey: 'e2b_...' })"
+        'API key is required, please visit https://console.ucloud.cn/modelverse/experience/api-keys to get your API key. ' +
+        'You can either set the environment variable `E2B_API_KEY` ' +
+        "or you can pass it directly to the sandbox like Sandbox.create({ apiKey: '...' })"
       )
     }
 
     if (opts?.requireAccessToken && !config.accessToken) {
       throw new AuthenticationError(
-        'Access token is required, please visit the Personal tab at https://e2b.dev/dashboard to get your access token. ' +
-          'You can set the environment variable `E2B_ACCESS_TOKEN` or pass the `accessToken` in options.'
+        'Access token is required, please visit https://console.ucloud.cn/modelverse/experience/api-keys to get your access token. ' +
+        'You can set the environment variable `E2B_ACCESS_TOKEN` or pass the `accessToken` in options.'
       )
     }
 
@@ -75,10 +75,7 @@ class ApiClient {
       // keepalive: true, // TODO: Return keepalive
       headers: {
         ...defaultHeaders,
-        ...(config.apiKey && { 'X-API-KEY': config.apiKey }),
-        ...(config.accessToken && {
-          Authorization: `Bearer ${config.accessToken}`,
-        }),
+        ...(config.apiKey && { 'X-API-Key': config.apiKey }),
         ...config.headers,
       },
       querySerializer: {
