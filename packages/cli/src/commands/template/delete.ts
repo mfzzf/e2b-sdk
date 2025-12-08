@@ -86,7 +86,7 @@ export const deleteCommand = new commander.Command('delete')
         } else if (opts.select) {
           const userConfig = getUserConfig()
           if (userConfig) {
-            teamId = teamId || userConfig.teamId
+            teamId = teamId
           }
 
           const allTemplates = await listSandboxTemplates({
@@ -157,8 +157,7 @@ export const deleteCommand = new commander.Command('delete')
 
         if (!opts.yes) {
           const confirmed = await confirm(
-            `Do you really want to delete ${
-              templates.length === 1 ? 'this template' : 'these templates'
+            `Do you really want to delete ${templates.length === 1 ? 'this template' : 'these templates'
             }?`
           )
 

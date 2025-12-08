@@ -293,7 +293,7 @@ Migration guide: ${asPrimary('https://e2b.dev/docs/template/migration-v2')}`
 
         const userConfig = getUserConfig()
         if (userConfig) {
-          teamID = teamID || userConfig.teamId
+          teamID = teamID
         }
 
         if (config && templateID && config.template_id !== templateID) {
@@ -507,21 +507,18 @@ async function waitForBuildFinish(
         const pythonExample = asPython(`from e2b import Sandbox, AsyncSandbox
 
 # Create sync sandbox
-sandbox = Sandbox.create("${
-          aliases?.length ? aliases[0] : template.templateID
-        }")
+sandbox = Sandbox.create("${aliases?.length ? aliases[0] : template.templateID
+          }")
 
 # Create async sandbox
-sandbox = await AsyncSandbox.create("${
-          aliases?.length ? aliases[0] : template.templateID
-        }")`)
+sandbox = await AsyncSandbox.create("${aliases?.length ? aliases[0] : template.templateID
+          }")`)
 
         const typescriptExample = asTypescript(`import { Sandbox } from 'e2b'
 
 // Create sandbox
-const sandbox = await Sandbox.create('${
-          aliases?.length ? aliases[0] : template.templateID
-        }')`)
+const sandbox = await Sandbox.create('${aliases?.length ? aliases[0] : template.templateID
+          }')`)
 
         const examplesMessage = `You can now use the template to create custom sandboxes.\nLearn more on ${asPrimary(
           'https://e2b.dev/docs'

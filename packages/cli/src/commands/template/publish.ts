@@ -70,7 +70,7 @@ async function templateAction(
     } else if (opts.select) {
       const userConfig = getUserConfig()
       if (userConfig) {
-        teamId = teamId || userConfig.teamId
+        teamId = teamId
       }
 
       const allTemplates = await listSandboxTemplates({
@@ -83,8 +83,7 @@ async function templateAction(
 
       if (filteredTemplates.length === 0) {
         console.log(
-          `No sandbox templates available ${
-            publish ? 'to publish' : 'to unpublish'
+          `No sandbox templates available ${publish ? 'to publish' : 'to unpublish'
           } found`
         )
         return
@@ -154,14 +153,11 @@ async function templateAction(
 
     if (!opts.yes) {
       const confirmed = await confirm(
-        `Do you really want to ${publish ? 'publish' : 'unpublish'} ${
-          templates.length === 1 ? 'this template' : 'these templates'
-        }?\n⚠️ This will make the ${
-          templates.length === 1 ? 'template' : 'templates'
-        } ${
-          publish
-            ? 'public to everyone outside your team'
-            : 'private to your team'
+        `Do you really want to ${publish ? 'publish' : 'unpublish'} ${templates.length === 1 ? 'this template' : 'these templates'
+        }?\n⚠️ This will make the ${templates.length === 1 ? 'template' : 'templates'
+        } ${publish
+          ? 'public to everyone outside your team'
+          : 'private to your team'
         }`
       )
 
@@ -174,8 +170,7 @@ async function templateAction(
     await Promise.all(
       templates.map(async (e) => {
         console.log(
-          `- ${
-            publish ? 'Publishing' : 'Unpublishing'
+          `- ${publish ? 'Publishing' : 'Unpublishing'
           } sandbox template ${asFormattedSandboxTemplate(
             { ...e, templateID: e.template_id },
             e.configPath

@@ -71,11 +71,11 @@ export function ensureAccessToken() {
   // If accessToken is not already set (either from env var or from user config), try to get it from config file
   if (!accessToken) {
     const userConfig = getUserConfig()
-    accessToken = userConfig?.accessToken
+    accessToken = userConfig?.accessToken || userConfig?.teamApiKey
   }
 
   if (!accessToken) {
-    console.error(authErrorBox('E2B_ACCESS_TOKEN'))
+    console.error(authErrorBox('E2B_API_KEY'))
     process.exit(1)
   } else {
     return accessToken
@@ -87,5 +87,7 @@ const userConfig = getUserConfig()
 export const connectionConfig = new e2b.ConnectionConfig({
   accessToken: process.env.E2B_ACCESS_TOKEN || userConfig?.accessToken,
   apiKey: process.env.E2B_API_KEY || userConfig?.teamApiKey,
+  domain: process.env.E2B_DOMAIN || 'uagentbox.ai',
+  apiUrl: process.env.E2B_API_URL || 'https://api.uagentbox.ai',
 })
 export const client = new e2b.ApiClient(connectionConfig)
