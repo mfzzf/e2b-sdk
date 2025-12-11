@@ -27,22 +27,22 @@ class ApiParams(TypedDict, total=False):
     """Additional headers to send with the request."""
 
     api_key: Optional[str]
-    """E2B API Key to use for authentication, defaults to `E2B_API_KEY` environment variable."""
+    """AgentBox API Key to use for authentication, defaults to `AGENTBOX_API_KEY` environment variable."""
 
     domain: Optional[str]
-    """E2B domain to use for authentication, defaults to `E2B_DOMAIN` environment variable."""
+    """AgentBox domain to use, defaults to `AGENTBOX_DOMAIN` environment variable."""
 
     api_url: Optional[str]
     """URL to use for the API, defaults to `https://api.<domain>`. For internal use only."""
 
     debug: Optional[bool]
-    """Whether to use debug mode, defaults to `E2B_DEBUG` environment variable."""
+    """Whether to use debug mode, defaults to `AGENTBOX_DEBUG` environment variable."""
 
     proxy: Optional[ProxyTypes]
     """Proxy to use for the request. In case of a sandbox it applies to all **requests made to the returned sandbox**."""
 
     sandbox_url: Optional[str]
-    """URL to connect to sandbox, defaults to `E2B_SANDBOX_URL` environment variable."""
+    """URL to connect to sandbox, defaults to `AGENTBOX_SANDBOX_URL` environment variable."""
 
 
 class ConnectionConfig:
@@ -54,27 +54,27 @@ class ConnectionConfig:
 
     @staticmethod
     def _domain():
-        return os.getenv("E2B_DOMAIN") or "e2b.app"
+        return os.getenv("AGENTBOX_DOMAIN") or "uagentbox.ai"
 
     @staticmethod
     def _debug():
-        return os.getenv("E2B_DEBUG", "false").lower() == "true"
+        return os.getenv("AGENTBOX_DEBUG", "false").lower() == "true"
 
     @staticmethod
     def _api_key():
-        return os.getenv("E2B_API_KEY")
+        return os.getenv("AGENTBOX_API_KEY")
 
     @staticmethod
     def _api_url():
-        return os.getenv("E2B_API_URL")
+        return os.getenv("AGENTBOX_API_URL")
 
     @staticmethod
     def _sandbox_url():
-        return os.getenv("E2B_SANDBOX_URL")
+        return os.getenv("AGENTBOX_SANDBOX_URL")
 
     @staticmethod
     def _access_token():
-        return os.getenv("E2B_ACCESS_TOKEN")
+        return os.getenv("AGENTBOX_ACCESS_TOKEN")
 
     def __init__(
         self,

@@ -219,9 +219,9 @@ class AsyncTemplate(TemplateBase):
                     )
                 )
 
-            domain = domain or os.environ.get("E2B_DOMAIN", "e2b.dev")
+            domain = domain or os.environ.get("AGENTBOX_DOMAIN", "uagentbox.ai")
             config = ConnectionConfig(
-                domain=domain, api_key=api_key or os.environ.get("E2B_API_KEY")
+                domain=domain, api_key=api_key or os.environ.get("AGENTBOX_API_KEY")
             )
             api_client = get_api_client(
                 config,
@@ -309,9 +309,9 @@ class AsyncTemplate(TemplateBase):
         )
         ```
         """
-        domain = domain or os.environ.get("E2B_DOMAIN", "e2b.dev")
+        domain = domain or os.environ.get("AGENTBOX_DOMAIN", "uagentbox.ai")
         config = ConnectionConfig(
-            domain=domain, api_key=api_key or os.environ.get("E2B_API_KEY")
+            domain=domain, api_key=api_key or os.environ.get("AGENTBOX_API_KEY")
         )
         api_client = get_api_client(
             config,
@@ -353,9 +353,9 @@ class AsyncTemplate(TemplateBase):
         status = await AsyncTemplate.get_build_status(build_info, logs_offset=0)
         ```
         """
-        domain = domain or os.environ.get("E2B_DOMAIN", "e2b.dev")
+        domain = domain or os.environ.get("AGENTBOX_DOMAIN", "uagentbox.ai")
         config = ConnectionConfig(
-            domain=domain, api_key=api_key or os.environ.get("E2B_API_KEY")
+            domain=domain, api_key=api_key or os.environ.get("AGENTBOX_API_KEY")
         )
         api_client = get_api_client(config)
         return await get_build_status(
