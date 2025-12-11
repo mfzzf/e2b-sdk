@@ -23,7 +23,7 @@ from ucloud_agentbox.template.utils import read_dockerignore
 
 class Template(TemplateBase):
     """
-    Synchronous template builder for E2B sandboxes.
+    Synchronous template builder for AgentBox sandboxes.
     """
 
     @staticmethod
@@ -180,7 +180,7 @@ class Template(TemplateBase):
         domain: Optional[str] = None,
     ) -> BuildInfo:
         """
-        Build and deploy a template to E2B infrastructure.
+        Build and deploy a template to AgentBox infrastructure.
 
         :param template: The template to build
         :param alias: Alias name for the template
@@ -188,12 +188,12 @@ class Template(TemplateBase):
         :param memory_mb: Amount of memory in MB allocated to the sandbox
         :param skip_cache: If True, forces a complete rebuild ignoring cache
         :param on_build_logs: Callback function to receive build logs during the build process
-        :param api_key: E2B API key for authentication
-        :param domain: Domain of the E2B API
+        :param api_key: AgentBox API key for authentication
+        :param domain: Domain of the AgentBox API
 
         Example
         ```python
-        from e2b import Template
+        from ucloud_agentbox import Template
 
         template = (
             Template()
@@ -279,20 +279,20 @@ class Template(TemplateBase):
         domain: Optional[str] = None,
     ) -> BuildInfo:
         """
-        Build and deploy a template to E2B infrastructure without waiting for completion.
+        Build and deploy a template to AgentBox infrastructure without waiting for completion.
 
         :param template: The template to build
         :param alias: Alias name for the template
         :param cpu_count: Number of CPUs allocated to the sandbox
         :param memory_mb: Amount of memory in MB allocated to the sandbox
         :param skip_cache: If True, forces a complete rebuild ignoring cache
-        :param api_key: E2B API key for authentication
-        :param domain: Domain of the E2B API
+        :param api_key: AgentBox API key for authentication
+        :param domain: Domain of the AgentBox API
         :return: BuildInfo containing the template ID and build ID
 
         Example
         ```python
-        from e2b import Template
+        from ucloud_agentbox import Template
 
         template = (
             Template()
@@ -341,13 +341,13 @@ class Template(TemplateBase):
 
         :param build_info: Build identifiers returned from build_in_background
         :param logs_offset: Offset for fetching logs
-        :param api_key: E2B API key for authentication
-        :param domain: Domain of the E2B API
+        :param api_key: AgentBox API key for authentication
+        :param domain: Domain of the AgentBox API
         :return: TemplateBuild containing the build status and logs
 
         Example
         ```python
-        from e2b import Template
+        from ucloud_agentbox import Template
 
         build_info = Template.build_in_background(template, alias='my-template')
         status = Template.get_build_status(build_info, logs_offset=0)

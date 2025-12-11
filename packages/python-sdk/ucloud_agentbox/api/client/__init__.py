@@ -1,4 +1,4 @@
-"""A client library for accessing E2B API"""
+"""A client library for accessing UCloud AgentBox API"""
 
 from .client import AuthenticatedClient, Client
 

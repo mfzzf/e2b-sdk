@@ -27,7 +27,7 @@ from types import TracebackType
 
 class TemplateBuilder:
     """
-    Builder class for adding instructions to an E2B template.
+    Builder class for adding instructions to an AgentBox template.
 
     All methods return self to allow method chaining.
     """
@@ -658,7 +658,7 @@ class TemplateBuilder:
         )
 
         # Using ReadyCmd helpers
-        from e2b import wait_for_port, wait_for_url
+        from ucloud_agentbox import wait_for_port, wait_for_url
 
         template.set_start_cmd(
             'python -m http.server 8000',
@@ -694,7 +694,7 @@ class TemplateBuilder:
         template.set_ready_cmd('curl http://localhost:8000/health')
 
         # Using ReadyCmd helpers
-        from e2b import wait_for_port, wait_for_file, wait_for_process
+        from ucloud_agentbox import wait_for_port, wait_for_file, wait_for_process
 
         template.set_ready_cmd(wait_for_port(3000))
 
@@ -722,7 +722,7 @@ class TemplateFinal:
 
 class TemplateBase:
     """
-    Base class for building E2B sandbox templates.
+    Base class for building AgentBox sandbox templates.
     """
 
     _logs_refresh_frequency = 0.2
@@ -738,7 +738,7 @@ class TemplateBase:
         :param file_context_path: Base path for resolving relative file paths in copy operations
         :param file_ignore_patterns: List of glob patterns to ignore when copying files
         """
-        self._default_base_image: str = "e2bdev/base"
+        self._default_base_image: str = "ucloud/agentbox-base"
         self._base_image: Optional[str] = self._default_base_image
         self._base_template: Optional[str] = None
         self._registry_config: Optional[RegistryConfig] = None
@@ -939,7 +939,7 @@ class TemplateBase:
 
     def from_base_image(self) -> TemplateBuilder:
         """
-        Start template from the E2B base image (e2bdev/base:latest).
+        Start template from the AgentBox base image (ucloud/agentbox-base:latest).
 
         :return: `TemplateBuilder` class
 
@@ -995,9 +995,9 @@ class TemplateBase:
 
     def from_template(self, template: str) -> TemplateBuilder:
         """
-        Start template from an existing E2B template.
+        Start template from an existing AgentBox template.
 
-        :param template: E2B template ID or alias
+        :param template: AgentBox template ID or alias
 
         :return: `TemplateBuilder` class
 
@@ -1168,13 +1168,13 @@ class TemplateBase:
         """
         Convert a template to Dockerfile format.
 
-        Note: Templates based on other E2B templates cannot be converted to Dockerfile.
+        Note: Templates based on other AgentBox templates cannot be converted to Dockerfile.
 
         :param template: The template to convert (TemplateBuilder or TemplateFinal instance)
 
         :return: Dockerfile string representation
 
-        :raises ValueError: If the template is based on another E2B template or has no base image
+        :raises ValueError: If the template is based on another AgentBox template or has no base image
 
         Example
         ```python
@@ -1185,7 +1185,7 @@ class TemplateBase:
         if template._template._base_template is not None:
             raise ValueError(
                 "Cannot convert template built from another template to Dockerfile. "
-                "Templates based on other templates can only be built using the E2B API."
+                "Templates based on other templates can only be built using the AgentBox API."
             )
 
         if template._template._base_image is None:

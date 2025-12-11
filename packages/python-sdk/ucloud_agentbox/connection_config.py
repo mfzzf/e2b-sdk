@@ -94,7 +94,7 @@ class ConnectionConfig:
         self.api_key = api_key or ConnectionConfig._api_key()
         self.access_token = access_token or ConnectionConfig._access_token()
         self.headers = headers or {}
-        self.headers["User-Agent"] = f"e2b-python-sdk/{package_version}"
+        self.headers["User-Agent"] = f"ucloud-agentbox-sdk/{package_version}"
         self.__extra_sandbox_headers = extra_sandbox_headers or {}
 
         self.proxy = proxy
@@ -198,7 +198,7 @@ class ConnectionConfig:
     @property
     def sandbox_headers(self):
         """
-        We need this separate as we use the same header for E2B access token to API and envd access token to sandbox.
+        We need this separate as we use the same header for access token to API and envd access token to sandbox.
         """
         return {
             **self.headers,
