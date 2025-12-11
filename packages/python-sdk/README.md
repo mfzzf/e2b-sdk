@@ -1,47 +1,46 @@
-<p align="center">
-  <img width="100" src="https://raw.githubusercontent.com/e2b-dev/E2B/refs/heads/main/readme-assets/logo-circle.png" alt="e2b logo">
-</p>
+# UCloud UAgentBox Python SDK
 
-<h4 align="center">
-  <a href="https://pypi.org/project/e2b/">
-    <img alt="Last 1 month downloads for the Python SDK" loading="lazy" width="200" height="20" decoding="async" data-nimg="1"
-    style="color:transparent;width:auto;height:100%" src="https://img.shields.io/pypi/dm/e2b?label=PyPI%20Downloads">
-  </a>  
-</h4>
+> **基于 [E2B](https://github.com/e2b-dev/e2b) 开源项目开发**
 
+UCloud UAgentBox Python SDK 提供云端沙箱环境，用于安全运行 AI 生成的代码。
 
-## What is E2B?
-[E2B](https://www.e2b.dev/) is an open-source infrastructure that allows you to run AI-generated code in secure isolated sandboxes in the cloud. To start and control sandboxes, use our [JavaScript SDK](https://www.npmjs.com/package/@e2b/code-interpreter) or [Python SDK](https://pypi.org/project/e2b_code_interpreter).
+## 安装
 
-## Run your first Sandbox
-
-### 1. Install SDK
-
-```
-pip install e2b-code-interpreter
+```bash
+pip install ucloud_uagentbox
 ```
 
-### 2. Get your E2B API key
-1. Sign up to E2B [here](https://e2b.dev).
-2. Get your API key [here](https://e2b.dev/dashboard?tab=keys).
-3. Set environment variable with your API key
+## 快速开始
+
+### 1. 获取 API Key
+
+1. 访问 [UCloud UAgentBox](https://uagentbox.ai) 注册账号
+2. 在控制台获取 API Key
+3. 设置环境变量：
+
+```bash
+export UAGENTBOX_API_KEY=your_api_key
 ```
-E2B_API_KEY=e2b_***
-```     
 
-### 3. Execute code with code interpreter inside Sandbox
+### 2. 运行代码
 
-```py
-from e2b_code_interpreter import Sandbox
+```python
+from ucloud_uagentbox import Sandbox
 
 with Sandbox.create() as sandbox:
     sandbox.run_code("x = 1")
-    execution = sandbox.run_code("x+=1; x")
-    print(execution.text)  # outputs 2
+    execution = sandbox.run_code("x += 1; x")
+    print(execution.text)  # 输出: 2
 ```
 
-### 4. Check docs
-Visit [E2B documentation](https://e2b.dev/docs).
+## 文档
 
-### 5. E2B cookbook
-Visit our [Cookbook](https://github.com/e2b-dev/e2b-cookbook/tree/main) to get inspired by examples with different LLMs and AI frameworks.
+访问 [UAgentBox 文档](https://docs.uagentbox.ai) 获取更多信息。
+
+## 致谢
+
+本项目基于 [E2B](https://github.com/e2b-dev/e2b) 开源项目开发，感谢 E2B 团队的贡献。
+
+## 许可证
+
+MIT License - 详见 [LICENSE](./LICENSE) 文件

@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "ucloud_agentbox"
+name = "ucloud_uagentbox"
 version = "1.0.0"
-description = "UCloud AgentBox SDK - Cloud sandbox environments for AI agents"
+description = "UCloud UAgentBox SDK - Cloud sandbox environments for AI agents"
 authors = ["UCloud <support@ucloud.cn>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://ucloud.cn/"
-repository = "https://github.com/ucloud/ucloud-agentbox-sdk"
-packages = [{ include = "ucloud_agentbox" }, { include = "e2b_connect" }]
+repository = "https://github.com/ucloud/ucloud-uagentbox-sdk"
+packages = [{ include = "ucloud_uagentbox" }, { include = "e2b_connect" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -38,9 +38,9 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/e2b-dev/e2b/issues"
+"Bug Tracker" = "https://github.com/ucloud/ucloud-uagentbox-sdk/issues"
 
 [tool.ruff]
 exclude = [
-    "ucloud_agentbox/envd/filesystem/filesystem_pb2.py"
+    "ucloud_uagentbox/envd/filesystem/filesystem_pb2.py"
 ]
